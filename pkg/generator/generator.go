@@ -191,7 +191,7 @@ func (s *SchemaDescriptor) AsGraphql() *ast.Schema {
 	}
 
 	for _, o := range s.objects {
-		if shouldIgnore(o.GetFullyQualifiedName()) {
+		if o != nil && shouldIgnore(o.GetFullyQualifiedName()) {
 			continue
 		}
 		def := o.AsGraphql()
