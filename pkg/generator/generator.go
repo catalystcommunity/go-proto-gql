@@ -364,8 +364,6 @@ func (s *SchemaDescriptor) CreateObjects(d desc.Descriptor, input, useFieldNames
 		obj.Definition.Fields = fields.AsGraphql()
 		obj.Definition.Kind = kind
 		obj.fields = fields
-		types := obj.GetTypes()
-		fmt.Println(types)
 	case *desc.EnumDescriptor:
 		obj.Definition.Kind = ast.Enum
 		obj.Definition.EnumValues = enumValues(dd.GetValues())
