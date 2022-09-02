@@ -28,8 +28,6 @@ const (
 var ignoreProtos = []string{}
 
 func NewSchemas(descs []*desc.FileDescriptor, mergeSchemas, genServiceDesc, useFieldNames, useBigIntType bool, ignoreProtoNames []string, plugin *protogen.Plugin) (schemas SchemaDescriptorList, err error) {
-	fmt.Println("ignoreProtoNames is: ")
-	fmt.Println(ignoreProtoNames)
 	ignoreProtos = ignoreProtoNames
 	var files []*descriptor.FileDescriptorProto
 	for _, d := range descs {
@@ -193,23 +191,6 @@ func (s *SchemaDescriptor) AsGraphql() *ast.Schema {
 	}
 
 	for _, o := range s.objects {
-		if o != nil {
-			fmt.Println("o is not nil")
-			descriptor := o.Descriptor
-			if descriptor != nil {
-				fmt.Println("descriptor is not nil")
-				name := descriptor.GetFullyQualifiedName()
-				fmt.Println(fmt.Sprintf("fully qualified name var : %s", name))
-				if shouldIgnore(name) {
-					fmt.Println("ignoring")
-					continue
-				}
-			} else {
-				fmt.Println("descriptor is nil")
-			}
-		} else {
-			fmt.Println("o is nil")
-		}
 		def := o.AsGraphql()
 		schema.Types[def.Name] = def
 	}
