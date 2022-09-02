@@ -191,8 +191,17 @@ func (s *SchemaDescriptor) AsGraphql() *ast.Schema {
 	}
 
 	for _, o := range s.objects {
-		if o != nil && shouldIgnore(o.GetFullyQualifiedName()) {
-			continue
+		if o != nil {
+			fmt.Println("o is not nil")
+			fmt.Println(fmt.Sprintf("fully qualified name: %s", o.GetFullyQualifiedName()))
+			name := o.GetFullyQualifiedName()
+			fmt.Println(fmt.Sprintf("fully qualified name var : %s", name))
+			if shouldIgnore(name) {
+				fmt.Println("ignoring")
+				continue
+			}
+		} else {
+			fmt.Println("o is nil")
 		}
 		def := o.AsGraphql()
 		schema.Types[def.Name] = def
