@@ -28,6 +28,8 @@ const (
 var ignoreProtos = []string{}
 
 func NewSchemas(descs []*desc.FileDescriptor, mergeSchemas, genServiceDesc, useFieldNames, useBigIntType bool, ignoreProtoNames []string, plugin *protogen.Plugin) (schemas SchemaDescriptorList, err error) {
+	fmt.Println("ignoreProtoNames is: ")
+	fmt.Println(ignoreProtoNames)
 	ignoreProtos = ignoreProtoNames
 	var files []*descriptor.FileDescriptorProto
 	for _, d := range descs {
