@@ -261,6 +261,9 @@ func (s *SchemaDescriptor) uniqueName(d desc.Descriptor, input bool) (name strin
 }
 
 func (s *SchemaDescriptor) CreateObjects(d desc.Descriptor, input, useFieldNames, useBigIntType bool) (obj *ObjectDescriptor, err error) {
+	if shouldIgnore(d.GetFullyQualifiedName()) {
+		return nil, nil
+	}
 	// the case if trying to resolve a primitive as a object. In this case we just return nil
 	if d == nil {
 		return
