@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"github.com/catalystsquad/app-utils-go/logging"
 	"github.com/catalystsquad/go-proto-gql/pkg/protoparser"
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/types/pluginpb"
@@ -49,6 +50,7 @@ func main() {
 		ProtoFile:      generator.ResolveProtoFilesRecursively(descs).AsFileDescriptorProto(),
 	})
 	fatal(err)
+	logging.Log.WithField("ignoreProtos", ignoreProtos).Info("main")
 	gqlDesc, err := generator.NewSchemas(descs, *merge, *svc, *useFieldNames, *useBigIntType, ignoreProtos, p)
 	fatal(err)
 	for _, schema := range gqlDesc {
