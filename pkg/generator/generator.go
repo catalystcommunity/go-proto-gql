@@ -841,7 +841,6 @@ func getValueKindFromProtobufFieldType(field *desc.FieldDescriptor) ast.ValueKin
 // graphql schema, but not the nested struct fields and directives.
 func shouldIgnore(fullyQualifiedName string) bool {
 	for _, ignoredProto := range ignoreProtos {
-		logging.Log.WithFields(logrus.Fields{"ignoredProto": ignoredProto}).Info("checking ignore")
 		if strings.Contains(fullyQualifiedName, ignoredProto) {
 			logging.Log.WithFields(logrus.Fields{"fqn": fullyQualifiedName}).Info("ignoring field")
 			return true
