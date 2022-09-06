@@ -29,6 +29,7 @@ var ignoreProtos = []string{}
 
 func NewSchemas(descs []*desc.FileDescriptor, mergeSchemas, genServiceDesc, useFieldNames, useBigIntType bool, ignoreProtoNames []string, plugin *protogen.Plugin) (schemas SchemaDescriptorList, err error) {
 	ignoreProtos = ignoreProtoNames
+	fmt.Println(fmt.Sprintf("ignore protos set to: %s", ignoreProtos))
 	var files []*descriptor.FileDescriptorProto
 	for _, d := range descs {
 		files = append(files, d.AsFileDescriptorProto())
@@ -838,7 +839,9 @@ func getValueKindFromProtobufFieldType(field *desc.FieldDescriptor) ast.ValueKin
 // graphql schema, but not the nested struct fields and directives.
 func shouldIgnore(fullyQualifiedName string) bool {
 	for _, ignoredProto := range ignoreProtos {
+		fmt.Println(fmt.Sprintf("checking ignore against: %s", ignoredProto))
 		if strings.Contains(fullyQualifiedName, ignoredProto) {
+			fmt.Println(fmt.Sprintf("ignoring field: %s", fullyQualifiedName))
 			return true
 		}
 	}
