@@ -281,7 +281,7 @@ func (s *SchemaDescriptor) CreateObjects(d desc.Descriptor, input, useFieldNames
 	s.createdObjects[createdObjectKey{d, input}] = obj
 	switch dd := d.(type) {
 	case *desc.MessageDescriptor:
-		if IsEmpty(dd) {
+		if IsEmpty(dd) || shouldIgnore(dd.GetFullyQualifiedName()) {
 			return obj, nil
 		}
 		if IsAny(dd) {
@@ -299,9 +299,6 @@ func (s *SchemaDescriptor) CreateObjects(d desc.Descriptor, input, useFieldNames
 		outputOneofRegistrar := map[*desc.OneOfDescriptor]struct{}{}
 
 		for _, df := range dd.GetFields() {
-			if shouldIgnore(df.GetFullyQualifiedName()) {
-				continue
-			}
 			fieldOpts := GraphqlFieldOptions(df.AsFieldDescriptorProto().GetOptions())
 			if fieldOpts != nil && fieldOpts.Ignore != nil && *fieldOpts.Ignore {
 				continue
