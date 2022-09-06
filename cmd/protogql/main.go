@@ -41,7 +41,7 @@ var (
 func main() {
 	flag.Var(&importPaths, "I", "path")
 	flag.Var(&fileNames, "f", "path")
-	flag.Var(&ignoreProtos, "ignoreProtos", "fully qualified protobuf names to ignore, for example 'google.protobuf.Value'")
+	flag.Var(&ignoreProtos, "ignoreProtos", "fully qualified protobuf names to ignore, for example 'google.protobuf.Value' separated by spaces")
 	flag.Parse()
 	descs, err := protoparser.Parse(importPaths, fileNames)
 	fatal(err)
