@@ -1,10 +1,10 @@
-module github.com/catalystsquad/go-proto-gql
+module github.com/catalystcommunity/go-proto-gql
 
 go 1.18
 
 require (
 	github.com/99designs/gqlgen v0.17.16
-	github.com/catalystsquad/app-utils-go v1.0.5
+	github.com/catalystcommunity/app-utils-go v1.0.5
 	github.com/golang/protobuf v1.5.2
 	github.com/jhump/protoreflect v1.12.0
 	github.com/nautilus/gateway v0.3.2

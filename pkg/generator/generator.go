@@ -11,8 +11,8 @@ import (
 	"google.golang.org/protobuf/compiler/protogen"
 	descriptor "google.golang.org/protobuf/types/descriptorpb"
 
-	"github.com/catalystsquad/app-utils-go/logging"
-	gqlpb "github.com/catalystsquad/go-proto-gql/pkg/graphqlpb"
+	"github.com/catalystcommunity/app-utils-go/logging"
+	gqlpb "github.com/catalystcommunity/go-proto-gql/pkg/graphqlpb"
 )
 
 const (

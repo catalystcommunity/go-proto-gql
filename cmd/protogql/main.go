@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"github.com/catalystsquad/app-utils-go/logging"
-	"github.com/catalystsquad/go-proto-gql/pkg/protoparser"
+	"github.com/catalystcommunity/app-utils-go/logging"
+	"github.com/catalystcommunity/go-proto-gql/pkg/protoparser"
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/types/pluginpb"
 	"log"
@@ -12,7 +12,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/catalystsquad/go-proto-gql/pkg/generator"
+	"github.com/catalystcommunity/go-proto-gql/pkg/generator"
 	"github.com/vektah/gqlparser/v2/formatter"
 )
 

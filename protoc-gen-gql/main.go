@@ -15,7 +15,7 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/pluginpb"
 
-	"github.com/catalystsquad/go-proto-gql/pkg/generator"
+	"github.com/catalystcommunity/go-proto-gql/pkg/generator"
 )
 
 func main() {
